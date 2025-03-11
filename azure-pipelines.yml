@@ -27,13 +27,16 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+
+- script: dir $(Build.ArtifactStagingDirectory)/html
+  displayName: 'Verify extracted files'
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Azure PayAsYouGo (90f2a80e-6934-46d8-9b29-95402af7c21c)'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      $storageAccountName = "aronresumestore"
+            $storageAccountName = "aronresumestore"
             $containerName = "$web"
             $sourceFolder = "$(Build.ArtifactStagingDirectory)/html"
       
