@@ -29,7 +29,7 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Azure PayAsYouGo (90f2a80e-6934-46d8-9b29-95402af7c21c)'
-    scriptType: 'pscore'
+    scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
             $storageAccountName = "aronresumestore"
