@@ -20,13 +20,6 @@ steps:
     Contents: '**.html'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/html'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'Resume.html'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
 
 - script: dir $(Build.ArtifactStagingDirectory)/html
   displayName: 'Verify extracted files'
