@@ -42,7 +42,7 @@ steps:
                 --destination $containerName `
                 --source $sourceFolder `
                 --account-name $storageAccountName `
-                --auth-mode login
+                --auth-mode key
       
             Write-Host "Upload complete!"
 
