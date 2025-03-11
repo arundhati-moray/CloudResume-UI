@@ -29,25 +29,6 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Azure PayAsYouGo (90f2a80e-6934-46d8-9b29-95402af7c21c)'
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-            $storageAccountName = "aronresumestore"
-            $containerName = "'$web"
-            $sourceFolder = "$(Build.ArtifactStagingDirectory)/html"
-
-            Write-Host "Uploading files from: $sourceFolder"
-      
-            az storage blob upload-batch `
-                --destination $containerName `
-                --source $sourceFolder `
-                --account-name $storageAccountName `
-                --auth-mode login
-      
-            Write-Host "Upload complete!"
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'Azure PayAsYouGo (90f2a80e-6934-46d8-9b29-95402af7c21c)'
     scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: |
@@ -64,3 +45,22 @@ steps:
                       --auth-mode login
             
                   Write-Host "Upload complete!"
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Azure PayAsYouGo (90f2a80e-6934-46d8-9b29-95402af7c21c)'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+            $storageAccountName = "aronresumestore"
+            $containerName = "'$web"
+            $sourceFolder = "$(Build.ArtifactStagingDirectory)/html"
+
+            Write-Host "Uploading files from: $sourceFolder"
+      
+            az storage blob upload-batch `
+                --destination $containerName `
+                --source $sourceFolder `
+                --account-name $storageAccountName `
+                --auth-mode login
+      
+            Write-Host "Upload complete!"
