@@ -27,14 +27,25 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
-
-- task: AzureFileCopy@6
+- task: AzureCLI@2
   inputs:
-    SourcePath: '.'
     azureSubscription: 'Azure PayAsYouGo (90f2a80e-6934-46d8-9b29-95402af7c21c)'
-    Destination: 'AzureBlob'
-    storage: 'aronresumestore'
-    ContainerName: '$web'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      $storageAccountName = "aronresumestore"
+            $containerName = "$web"
+            $sourceFolder = "$(Build.ArtifactStagingDirectory)/html"
+      
+            az storage blob upload-batch `
+                --destination $containerName `
+                --source $sourceFolder `
+                --account-name $storageAccountName `
+                --auth-mode login
+      
+            Write-Host "Upload complete!"
+
+
 
 
 
