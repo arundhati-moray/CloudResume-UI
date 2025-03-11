@@ -29,12 +29,14 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Azure PayAsYouGo (90f2a80e-6934-46d8-9b29-95402af7c21c)'
-    scriptType: 'ps'
+    scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: |
             $storageAccountName = "aronresumestore"
-            $containerName = "$web"
+            $containerName = "'$web"
             $sourceFolder = "$(Build.ArtifactStagingDirectory)/html"
+
+            Write-Host "Uploading files from: $sourceFolder"
       
             az storage blob upload-batch `
                 --destination $containerName `
