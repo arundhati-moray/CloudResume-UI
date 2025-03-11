@@ -45,8 +45,3 @@ steps:
                 --auth-mode login
       
             Write-Host "Upload complete!"
-
-
-
-
-
