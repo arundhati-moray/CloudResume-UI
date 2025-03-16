@@ -34,7 +34,6 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
             $storageAccountName = "aronresumestore"
-            $containerName = $web
             $sourceFolder = "$(Build.ArtifactStagingDirectory)/html"
 
             Write-Host "Uploading files from: $sourceFolder"
@@ -44,5 +43,6 @@ steps:
                 --source $sourceFolder `
                 --account-name $storageAccountName `
                 --auth-mode login
+                --overwrite true
       
             Write-Host "Upload complete!"
