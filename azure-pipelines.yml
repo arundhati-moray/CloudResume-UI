@@ -43,6 +43,6 @@ steps:
                 --source $sourceFolder `
                 --account-name $storageAccountName `
                 --auth-mode login
-                --overwrite true
+                --overwrite=true
       
             Write-Host "Upload complete!"
