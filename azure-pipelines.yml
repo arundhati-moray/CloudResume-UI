@@ -40,7 +40,7 @@ steps:
             Write-Host "Uploading files from: $sourceFolder"
       
             az storage blob upload-batch `
-                --destination "$web" `
+                --destination $web `
                 --source $sourceFolder `
                 --account-name $storageAccountName `
                 --auth-mode login
