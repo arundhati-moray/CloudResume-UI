@@ -34,7 +34,7 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
             $storageAccountName = "aronresumestore"
-            $containerName = "'$web"
+            $containerName = "$web"
             $sourceFolder = "$(Build.ArtifactStagingDirectory)/html"
 
             Write-Host "Uploading files from: $sourceFolder"
